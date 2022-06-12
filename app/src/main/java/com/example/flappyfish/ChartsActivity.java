@@ -38,6 +38,7 @@ public class ChartsActivity extends AppCompatActivity {
         daoPlayer = new DAOPlayer();
         loadData();
 
+//      Ánh xạ nút Trở về và thiết lập sự kiện
         BtnTroVe = (Button) findViewById(R.id.btnTroVe);
         BtnTroVe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,10 +48,9 @@ public class ChartsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
+//  Lấy dữ liệu từ realtime database
     private void loadData(){
         daoPlayer.get().addValueEventListener(new ValueEventListener() {
             @Override

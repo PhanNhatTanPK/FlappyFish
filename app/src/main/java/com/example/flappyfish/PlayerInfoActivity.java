@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PlayerInfoActivity extends AppCompatActivity {
-
     private Button btnSave;
     private Button btnNext;
     private TextView DisplayScore;
@@ -23,16 +22,19 @@ public class PlayerInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_info);
-
+//  Lấy điểm người chơi
         Intent receiveIntent = getIntent();
         score = receiveIntent.getIntExtra("score",0);
+
         daoPlayer = new DAOPlayer();
 
+//  Hiện thị điểm
         DisplayScore = (TextView) findViewById(R.id.Score);
         DisplayScore.setText("Score: "+score);
 
         EdtTen = (EditText) findViewById(R.id.edtten);
 
+//  Lưu điểm người chơi
         btnSave = (Button) findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,7 @@ public class PlayerInfoActivity extends AppCompatActivity {
             }
         });
 
+//      Ánh xạ và xử lý sự kiện cho nút chuyển qua trang Game Over
         btnNext = (Button) findViewById(R.id.btn_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override

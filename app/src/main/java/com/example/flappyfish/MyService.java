@@ -6,16 +6,11 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 
 public class MyService extends Service {
+    MediaPlayer player;
+
     public MyService() {
     }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    MediaPlayer player;
     @Override
     public void onCreate() {
         // khởi tạo cho biến player từ bài nhạc lưu trong thư mục raw
@@ -32,13 +27,6 @@ public class MyService extends Service {
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
-
-        player.start();
-        super.onStart(intent, startId);
-    }
-
-    @Override
     public void onDestroy() {
         if (player.isPlaying()) {
             // dừng phát nhạc
@@ -46,6 +34,13 @@ public class MyService extends Service {
         }
         super.onDestroy();
     }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
     @Override
     public boolean onUnbind(Intent intent) {
         return super.onUnbind(intent);

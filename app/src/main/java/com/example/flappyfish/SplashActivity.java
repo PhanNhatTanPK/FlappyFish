@@ -30,6 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
+//      Thiết lập thời gian chờ
         Thread thread = new Thread() {
             @Override
             public void run() {

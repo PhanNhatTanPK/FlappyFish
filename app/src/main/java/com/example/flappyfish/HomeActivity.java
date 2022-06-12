@@ -17,7 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+//  Ánh xạ và xử lý sự kiện cho nút Bắt đầu game
         btnbatdau = (Button) findViewById(R.id.btn_batdau);
         btnbatdau.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+//  Ánh xạ và xử lý sự kiện cho nút xem Bảng xếp hạng
         btnBangXepHang = (Button) findViewById(R.id.btn_bangxephang);
         btnBangXepHang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+//  Ánh xạ và xử lý sự kiện cho nút Thoát
         btnthoat = (Button) findViewById(R.id.btn_thoat);
         btnthoat.setOnClickListener(new View.OnClickListener() {
             @Override

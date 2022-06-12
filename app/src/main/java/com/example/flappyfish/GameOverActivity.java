@@ -15,7 +15,7 @@ public class GameOverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
-
+//Ánh xạ và xử lý sự kiện cho nút Play again
         BtnPlayAgain = (Button) findViewById(R.id.btn_play_again);
         BtnPlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override

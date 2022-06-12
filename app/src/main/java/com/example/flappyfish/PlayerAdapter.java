@@ -17,6 +17,7 @@ public class PlayerAdapter extends ArrayAdapter {
     private int resource;
     private List<Player> arrContact;
 
+//    Phương thức khởi tạo PlayAdapter
     public PlayerAdapter(@NonNull Context context, int resource, @NonNull List<Player> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -28,6 +29,7 @@ public class PlayerAdapter extends ArrayAdapter {
         TextView tvPlayerName, tvOrder, tvScore;
     }
 
+//    Thiết lập View
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

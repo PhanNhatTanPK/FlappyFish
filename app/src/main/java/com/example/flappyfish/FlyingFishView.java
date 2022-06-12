@@ -124,7 +124,7 @@ public class FlyingFishView extends View {
             fishY = maxFishY;
         }
         fishSpeed += 2;
-//        Làm nhân vật chuyển động khi chạm
+//        Thay đổi nhân vật khi chạm
         if(score < 30) {
             if(touch) {
                 canvas.drawBitmap(fish[1],fishX, fishY, null);
@@ -220,6 +220,7 @@ public class FlyingFishView extends View {
             largeFishX = canavasWidth + 21;
             largeFishY = (int) Math.floor(Math.random() * (maxFishY - minFishY)) + minFishY;
         }
+
 //         Trừ mạng nếu ăn cá lớn
         if(hitFishChecker(largeFishX, largeFishY)) {
             if(score >= 120) {
@@ -243,8 +244,8 @@ public class FlyingFishView extends View {
                 veryLargeFish1X = canavasWidth + 21;
                 veryLargeFish1Y = (int) Math.floor(Math.random() * (maxFishY - minFishY)) + minFishY;
             }
-//         Trừ mạng nếu ăn cá siêu lớn 1
 
+//         Trừ mạng nếu ăn cá siêu lớn 1
             if (hitFishChecker(veryLargeFish1X, veryLargeFish1Y)) {
                 lifeCounter--;
 
@@ -262,8 +263,8 @@ public class FlyingFishView extends View {
                 veryLargeFish2X = canavasWidth + 21;
                 veryLargeFish2Y = (int) Math.floor(Math.random() * (maxFishY - minFishY)) + minFishY;
             }
-//         Trừ mạng nếu ăn cá siêu lớn 2
 
+//         Trừ mạng nếu ăn cá siêu lớn 2
             if (hitFishChecker(veryLargeFish2X, veryLargeFish2Y)) {
                 lifeCounter--;
 
@@ -292,7 +293,7 @@ public class FlyingFishView extends View {
         }
     }
 
-    //      Phương thức kiểm tra có chạm vào các con cá khác hay không
+//    Kiểm tra cá chính có chạm vào các con cá khác hay không
     public boolean hitFishChecker(int x, int y) {
         if(score < 30) {
             if(fishX < x && x < (fishX + fish[0].getWidth()) &&
@@ -315,6 +316,7 @@ public class FlyingFishView extends View {
         return false;
     }
 
+//    Xử lý di chuyển khi nhấn vào màn hình
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -326,8 +328,7 @@ public class FlyingFishView extends View {
 
     public void gameOver() {
         Toast.makeText(getContext(),"Game Over", Toast.LENGTH_LONG).show();
-
-//      Chuyển dữ liệu sang Chart1Activity
+//      Chuyển dữ liệu sang PlayerInfoActivity
         Intent scoreIntent = new Intent(getContext(),PlayerInfoActivity.class);
         scoreIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         scoreIntent.putExtra("score", score);

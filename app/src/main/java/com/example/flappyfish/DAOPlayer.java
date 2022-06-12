@@ -8,16 +8,19 @@ import com.google.firebase.database.Query;
 public class DAOPlayer {
     private DatabaseReference databaseReference;
 
+//    Khởi tạo DAOPlayer
     public DAOPlayer() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
     }
 
+//    Thêm người chơi
     public Task<Void> add(Player player){
         return databaseReference.push().setValue(player);
     }
 
+//    Lấy dữ liệu
     public Query get(){
-        return databaseReference.orderByKey();
+        return databaseReference.orderByChild("score");
     }
 }
