@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "946963660041",
+    "project_id": "flappyfish-59546",
+    "storage_bucket": "flappyfish-59546.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946963660041:android:9a87c1482a324d18de27d8",
+        "android_client_info": {
+          "package_name": "com.example.flappyfish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946963660041-r3gqian2t8muvpqhvd2qukdg1sf73c4k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flappyfish",
+            "certificate_hash": "a0659fa13eba24b3e9fdc4dd5b8df064c5da3a79"
+          }
+        },
+        {
+          "client_id": "946963660041-9caa970lpt7gl8b2rcdp5n67j4kdv89f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxJinMQVwz2itorykhGF1xluVlRpn1nlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946963660041-9caa970lpt7gl8b2rcdp5n67j4kdv89f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
