@@ -8,9 +8,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.net.rtp.AudioStream;
+import android.os.Build;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 public class FlyingFishView extends View {
     private Bitmap fish[] = new Bitmap[6];
@@ -19,6 +29,10 @@ public class FlyingFishView extends View {
     private int fishSpeed;
     private int maxFishY;
     String name;
+    SoundPool soundPool;
+    int sound;
+
+    private Bitmap soundOff;
 
     private Bitmap smallFish;
     private int smallFishX, smallFishY, smallFishSpeed = 5;
@@ -42,7 +56,10 @@ public class FlyingFishView extends View {
     private int canavasWidth, canavasHeight;
     private boolean touch = false;
     private int score, lifeCounter;
+    Intent intentMusic = new Intent(getContext(), SoundEatService.class);
+
     //    Phương thức khởi tạo view
+
     public FlyingFishView(Context context) {
         super(context);
 //        Tạo hình cho nhân vật chính
@@ -94,6 +111,7 @@ public class FlyingFishView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
 //        Lấy chiều rộng, cao của khung hình
         canavasWidth = canvas.getWidth();
         canavasHeight = canvas.getHeight();
@@ -189,6 +207,7 @@ public class FlyingFishView extends View {
         if(hitFishChecker(smallFishX, smallFishY)) {
             score += 10;
             smallFishX = -100;
+            getContext().startService(intentMusic);
         }
 //        Vẽ cá nhỏ
         canvas.drawBitmap(smallFish, smallFishX, smallFishY,null);
@@ -210,6 +229,7 @@ public class FlyingFishView extends View {
             else
                 score += 20;
             mediumFishX = -100;
+            getContext().startService(intentMusic);
         }
 //        Vẽ cá vừa
         canvas.drawBitmap(mediumFish, mediumFishX, mediumFishY,null);
@@ -233,6 +253,7 @@ public class FlyingFishView extends View {
                 }
             }
             largeFishX = -100;
+            getContext().startService(intentMusic);
         }
 //        Vẽ cá lớn
         canvas.drawBitmap(largeFish, largeFishX, largeFishY,null);
@@ -253,6 +274,7 @@ public class FlyingFishView extends View {
                     gameOver();
                 }
                 veryLargeFish1X = -100;
+                getContext().startService(intentMusic);
             }
 //        Vẽ cá siêu lớn 1
             canvas.drawBitmap(veryLargeFish1, veryLargeFish1X, veryLargeFish1Y, null);
@@ -272,6 +294,7 @@ public class FlyingFishView extends View {
                     gameOver();
                 }
                 veryLargeFish2X = -100;
+                getContext().startService(intentMusic);
             }
 //        Vẽ cá siêu lớn 2
             canvas.drawBitmap(veryLargeFish2, veryLargeFish2X, veryLargeFish2Y, null);
@@ -295,6 +318,7 @@ public class FlyingFishView extends View {
 
 //    Kiểm tra cá chính có chạm vào các con cá khác hay không
     public boolean hitFishChecker(int x, int y) {
+
         if(score < 30) {
             if(fishX < x && x < (fishX + fish[0].getWidth()) &&
                     fishY < y && y < (fishY + fish[0].getHeight())) {
@@ -319,10 +343,11 @@ public class FlyingFishView extends View {
 //    Xử lý di chuyển khi nhấn vào màn hình
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            touch = true;
-            fishSpeed = -22;
-        }
+         if(event.getAction() == MotionEvent.ACTION_DOWN) {
+             touch = true;
+             fishSpeed = -22;
+         }
+
         return true;
     }
 
