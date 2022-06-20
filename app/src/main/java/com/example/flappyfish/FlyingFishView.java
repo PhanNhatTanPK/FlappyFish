@@ -347,6 +347,10 @@ public class FlyingFishView extends View {
              touch = true;
              fishSpeed = -22;
          }
+         else if(event.getAction() == MotionEvent.ACTION_MOVE){
+             Intent intentMusic = new Intent(getContext(), MyService.class);
+             getContext().stopService(intentMusic);
+         }
 
         return true;
     }
